@@ -1,0 +1,70 @@
+.details-safe-disclaimer {
+
+    margin-bottom: 0px;
+    
+    ul {
+        margin-left: -20px;
+        font-size: 11px;
+
+        li:last-child {
+            padding-top: 5px;
+        }
+    }
+}
+.legal-container {
+    min-height: 200px;
+    max-height: 30vh;
+    border: 1px solid #cccccc;
+    overflow-y: scroll;
+    padding: 10px;
+    h1 {
+        font-size: 26px;
+        font-weight: 400;
+        margin: 0px;
+    }
+    h2 {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 0px;
+    }
+    p, ul, ol {
+        font-size: 12px;
+        margin: 0em;
+    }
+}
+.account-and-legal {
+    .box-title {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+}
+.header-company-placeholder {
+    color: #ccc;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-size: 18px;
+}
+.add-new-car {
+    display: none;
+}
+.no-value-warning {
+    border: 1px solid #9a1212 !important;
+    padding: 5px !important;
+    border-radius: 4px !important;
+}
+.authorised-cars {
+    .row {
+        padding: 1px;
+    }
+}
+.model-dialog {
+    display: block;
+    width: 600px;
+    background-color: #fff;
+    height: fit-content;
+    left: calc(50vw - 300px);
+    top: 200px;
+    box-shadow: 0px 0px 10px #5a5a5a;
+}

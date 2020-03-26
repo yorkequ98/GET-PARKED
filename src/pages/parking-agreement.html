@@ -1,0 +1,105 @@
+---
+title: Parking Agreement
+---
+
+<div class="container-fluid">
+
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Parking Agreement</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="/">Dashboard</a></li>
+                <li class="active">Parking Agreement</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row equal">
+        <div class="col-md-12 col-xs-12">
+            <div class="white-box" style="margin-bottom: 10px;">
+                <article>
+                    <h1>Monthly Parking Agreement</h1>
+                    <p>Valued Customer,</p>
+                    <p>Please find attached your monthly Agreement as discussed. To confirm your booking, please thoroughly review and complete this Agreement ensuring all details are accurately provided.</p>
+                    <p>For corporate accounts, please include your Company ABN. For individuals, please attach a copy of your drivers licence. </p>
+                    <p>If you wish to terminate your Agreement, you are required under the terms of this Agreement to provide one months written notice. </p>
+                    
+                    <h4><br>SCHEDULE</h4>
+                    <p>Location: <span id="park-location">{{options.location}}</span></p>
+                    <p>Bay Allocation: <span id="bay-number">{{options.allocation}}</span></p>
+                    <p>Rate (monthly): <span name="rate">{{options.rate}}</span></p>
+                    <p>Commencement Date: <input name="start-date" type="text" placeholder="Date here" style="border: none"></p>
+                    <div style="padding-bottom: 20px;"><button class="btn btn-success" id="btn-pay-method" style="width: 160px;">Switch to manual</button><span id="account-style" style="padding-left: 10px"> I would like to have manual account keeping<br></span></div>
+                    <table class="table table-striped table-bordered" id="monthlyPayments" style="width: 50%">
+                        <thead>
+                            <tr>
+                                <th>Bays</th>
+                                <th>Rate</th>
+                                <th>Net</th>
+                                <th>GST</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 15%; text-align: center;"><span>1</span></td>
+                                <td style="width: 15%; text-align: center;"><span name="rate">{{options.rate1}}</span></td>
+                                <td style="width: 15%; text-align: center;"><span id="net">{{options.net1}}</span></td>
+                                <td style="width: 15%; text-align: center;"><span id="gst">{{options.gst1}}</span></td>
+                                <td style="width: 15%; text-align: center;"><span name="rate">{{options.total1}}</span></td>
+                            </tr>
+                            <tr>
+                                <td id="pay-method" colspan="2">Credit Card surcharge</td>
+                                <td style="width: 15%; text-align: center;"><span id="net-add-charge">{{options.net2}}</span></td>
+                                <td style="width: 15%; text-align: center;"><span id="gst-add-charge">{{options.gst2}}</span></td>
+                                <td style="width: 15%; text-align: center;"><span id="total-add-charge">{{options.total2}}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Regular Monthly rate</td>
+                                <td style="width: 15%; text-align: center;"><span id="rate-extra">{{options.monthly}}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan= "4">Refundable Deposit</td>
+                                <td style="width: 15%; text-align: center;"><span>$30</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Total</td>
+                                <td style="width: 15%; text-align: center;"><span id="total">{{options.total3}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <i>
+                        <p>*Account keeping fee is $15 / month (inc GST) if paying by Electronic Funds Transfer (EFT).<br> If paying by automatic credit card (Visa or Mastercard) deductions, Account keeping fee is waived and a 1% credit card fee is charged. 2 % surcharge for Amex payments.</p>
+                    </i>
+                    <p></p>
+                    <h4><br>DETAILS</h4>
+                    <p>This Agreement is made on <span name="date"></span>, between the following parties: </p>
+                    <p><b>Get Parked (QLD) Pty Ltd</b> ABN 38 617 322 817 of 32 Austin Street, Newstead 4006</p>
+                    <p>And</p>
+                    <p name="full-name">{{options.fullname}}</p>
+                    <p>Of</p>
+                    <p><input name="address" type="text" placeholder="Address here" style="border: none; width: 40%;"></p>
+                    <p name="mobile">{{options.mobile}}</p>
+                    <p name="email">{{options.email}}</p>
+                    <p>In consideration of the payment by the customer of the rate specified in the Schedule, Get Parked grants the Customer the right to park vehicle(s) in the Carpark in accordance with the Terms and Conditions below. </p>
+                    <p>This Agreement will commence on the date specified in the Schedule for a minimum of 1 month and will continue thereafter from month to month until terminated by either party in accordance with the Terms and Conditions below.</p>
+                    <p>By signing this Agreement the customer acknowledges they are bound by the Terms and Conditions set out below, acknowledges that the customer will acquaint each person who will use the Carpark under this Agreement with the Terms and Conditions and warrants that each such person will observe the Terms and Conditions.  The customer is liable for any breach of this Agreement by persons they provide Carpark access to, not named on this Agreement.</p>
+                    <p>Signed: <i><span name="full-name"></span></i> &emsp; Date: <span name="date"></span></p>
+
+                    <p>
+                        <input type="checkbox" id="terms-and-conditions">
+                        I accept the 
+                        <a href="/terms-and-conditions.html" target="_blank">Terms & Conditions</a>
+                    </p>
+
+                    <p>All the information in the document above is true and correct</p>
+                    <button class="btn btn-success" id="btn-agree" style="width: 115px;">Agree</button><button class="btn btn-danger" id="btn-back" style="width: 115px; margin-left: 10px">Take me back</button>
+                </article>
+            </div>
+        </div>
+    </div>
+    
+
+</div>

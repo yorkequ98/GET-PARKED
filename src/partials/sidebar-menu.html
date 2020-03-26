@@ -1,0 +1,29 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav slimscrollsidebar">
+        <div class="sidebar-head">
+            <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+        </div>
+        <ul class="nav" id="side-menu">
+<!--
+            <li>
+                <a href="#" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+            </li>
+ -->
+            <li>
+                <a href="/carparks.html" class="waves-effect {{#ifpage 'carparks'}}active{{/ifpage}}"><i class="fa fa-car fa-fw" aria-hidden="true"></i>Parking Spaces</a>
+            </li>
+            <li>
+                <a href="/profile.html" class="waves-effect {{#ifpage 'profile' 'change-password' 'account-legal'}}active{{/ifpage}}"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+            </li>
+            <li>
+                <a href="/billing.html" class="waves-effect {{#ifpage 'billing'}}active{{/ifpage}}"><i class="fa fa-dollar fa-fw" aria-hidden="true"></i>Billing &amp; Invoices</a>
+            </li>
+
+<!--
+            <li>
+                <a href="#" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Message Center</a>
+            </li>
+-->
+        </ul>
+    </div>
+</div>

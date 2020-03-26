@@ -1,0 +1,59 @@
+---
+layout: login
+title: Log In
+---
+
+<div class="top-content">
+    
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-8 col-lg-offset-2 text">
+                    <h1><strong>Get Parked</strong> Admin Portal</h1>
+                    <div class="description hidden-sm hidden-xs">
+                        <p>
+                            View statistics on customer interest
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="white-box" style="margin-bottom: 10px;">
+                        <h2 id="statsTotal"></h2>
+                        <h4>Registrations This Year</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="white-box" style="margin-bottom: 10px;">
+                        <h4>Percentage of Weekly Goal</h4>
+                        <h4 id="statsPercentage"></h4>
+                        <canvas id="percentChart" width="500" height="500"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-8 col-lg-offset-2 text">
+                    <div class="white-box" style="margin-bottom: 10px;">
+                        <h4>Clicks Per Day</h4>
+                        <canvas id="weekChart" width="1600" height="900"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-8 col-lg-offset-2 text">
+                    <div class="white-box" style="margin-bottom: 10px;">
+                        <h4>Clicks Per Month</h4>
+                        <canvas id="monthChart" width="1600" height="900"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+</div>

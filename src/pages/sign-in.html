@@ -1,0 +1,63 @@
+---
+layout: login
+title: Log In
+---
+
+<div class="top-content">
+    
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-8 col-lg-offset-2 text">
+                    <h1><strong>Get Parked</strong> Customer Portal</h1>
+                    <div class="description hidden-sm hidden-xs">
+                        <p>
+                            Sign in to the Get Parked Portal to manage your account, bookings and reservations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row signin-box">
+                <div class="col-sm-12 col-md-7 col-lg-6 col-md-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Sign In</h3>
+                            <p>Enter your email address and password to begin</p>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" id="loginForm" method="post" class="login-form form-material">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Email</label>
+                                <input type="text" name="form-username" placeholder="Email..." class="form-username form-control" id="form-username">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                            </div>
+                            <span>Email and password do not match!</span>
+                            <button type="submit" class="btn btn-info">Sign in!</button>
+                            <a href="/forgot-password.html" class="forgot-password">Forgot your password?</a>
+                            <div class="mobile-signup-block visible-xs visible-sm">
+                                <hr />
+                                <a href="/new-account.html" type="submit">Don't have an account? Sign Up!</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row signup hidden-sm hidden-xs">
+                <div class="col-sm-6 col-sm-offset-3 social-login">
+                    <h2>Not a registered user?</h2>
+                    <p>If you're not a registered user, sign up to reserve your booking with our platform. There's literally no strings attached!</p>
+                    <div class="social-login-buttons">
+                        <a class="btn btn-link-2" href="/new-account.html">
+                            Sign me up!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

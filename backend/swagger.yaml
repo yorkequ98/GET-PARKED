@@ -1,0 +1,244 @@
+swagger: "2.0"
+info:
+  title: Get Parked API
+  description: Welcome to the Get Parked API
+  version: 1.0.0
+host: 127.0.0.1:8080
+basePath: /
+schemes:
+  - http
+tags:
+- name: "accounts"
+  description: "Everything related to accounts"
+- name: "parking"
+  description: "Parking and booking APIs"
+components:
+  securitySchemes:
+    sessionToken:         # arbitrary name for the security scheme; will be used in the "security" key later
+      type: apiKey
+      in: cookie
+      name: ACTIVESESSION
+paths:
+  /login:
+    post:
+      tags:
+      - "accounts"
+      summary: Logs the user in and returns a session id
+      produces:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "email"
+        description: "User's registered email"
+        required: true
+      - in: "body"
+        name: "password"
+        description: "Plaintext user password"
+        required: true
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorised
+  /logout:
+    get:
+      tags:
+      - "accounts"
+      summary: Destroys the existing session for a user.
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      responses:
+        200:
+          description: OK
+  /new-account:
+    post:
+      tags:
+      - "accounts"
+      summary: Registers a new user account
+      produces:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "fullName"
+        description: "User's fullName"
+        required: true
+      - in: "body"
+        name: "mobile"
+        description: "Plaintext user mobile"
+        required: true
+      - in: "body"
+        name: "email"
+        description: "Plaintext user email"
+        required: true
+      - in: "body"
+        name: "password"
+        description: "Plaintext user password"
+        required: true
+      - in: "body"
+        name: "passwordRepeat"
+        description: "A repeat of the user's plaintext password"
+        required: true
+      responses:
+        200:
+          description: OK
+  /account-data:
+    get:
+      tags:
+      - "accounts"
+      summary: Returns all account data for a user if they have an active session.
+      security:
+      - sessionToken: []
+      produces:
+        - application/json
+      responses:
+        200:
+          description: A JSON of all account fields except account ID and password hash.
+        401:
+          description: Unauthorised
+  /update:
+    post:
+      tags:
+      - "accounts"
+      summary: Updates account information for a user who has an active session.
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      parameters:
+      - in: "body"
+        name: "name"
+        description: "User's full name"
+        required: true
+      - in: "body"
+        name: "company"
+        description: "Name of the user's company"
+        required: true
+      - in: "body"
+        name: "mobile"
+        description: "User's mobile number"
+        required: true
+      - in: "body"
+        name: "address"
+        description: "Address where user's car is garaged"
+        required: true
+      - in: "body"
+        name: "file"
+        description: "Name of driver's license image file"
+        required: false
+
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorised
+  /change-password:
+    post:
+      tags:
+      - "accounts"
+      summary: Updates a user's password if they have a valid session
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      parameters:
+      - in: "body"
+        name: "oldPass"
+        description: "User's current password in plaintext"
+        required: true  
+      - in: "body"
+        name: "newPass"
+        description: "User's new password in plaintext"
+        required: true 
+      - in: "body"
+        name: "newPassRepeat"
+        description: "User's new password in plaintext repeated. Must match newPass for the change to be valid."
+        required: true 
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad requirements. The old password was incorrect or the new passwords did not match 
+        401:
+          description: Unauthorised (they did not have a session)
+  
+  /map-data-detailed-old:
+    get:
+      tags:
+      - "parking"
+      summary: Returns park data located in the old Google Sheets system (compatibility)
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      responses:
+        200:
+          description: An array containing available parking locations
+        401:
+          description: Unauthorised
+  /map-data-detailed:
+    get:
+      tags:
+      - "parking"
+      summary: Returns park data from the database
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      responses:
+        200:
+          description: An array containing available parking locations and their details, including number of available parks
+        401:
+          description: Unauthorised
+        500:
+          description: Internal Server Error
+  /map-data-minimal:
+    get:
+      tags:
+      - "parking"
+      summary: Returns minimal park data from the database
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      responses:
+        200:
+          description: An array containing available parking locations, showing only the suburb and rough geolocation
+        401:
+          description: Unauthorised
+        500:
+          description: Internal Server Error
+  /book-park:
+    post:
+      tags:
+      - "parking"
+      summary: Books a park and updates the database accordingly
+      produces:
+        - application/json
+      security:
+      - sessionToken: []
+      parameters:
+      - in: "body"
+        name: "suburb"
+        description: "The suburb of the park"
+        required: true
+      - in: "body"
+        name: "street"
+        description: "The street address of the park"
+        required: true
+      - in: "body"
+        name: "postcode"
+        description: "The postcode of the park"
+        required: true
+      - in: "body"
+        name: "type"
+        description: "The type of the park"
+        required: true
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorised
+        500:
+          description: Internal Server Error

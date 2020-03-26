@@ -1,0 +1,11 @@
+# Normal exclude files...
+
+node_modules
+.DS_Store
+/dist
+npm-debug.log
+.psd
+.ai
+output.pdf
+outputpdf.pdf
+backend/uploads/agreement.pdf

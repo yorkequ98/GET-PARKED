@@ -1,0 +1,10 @@
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+
+    .white-box {
+        height: 100%;
+        margin-bottom: 0px;
+    }
+}

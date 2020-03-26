@@ -1,0 +1,108 @@
+.carparksAvailable-wrapper {
+    overflow-y: scroll;
+    height: calc(100vh - 358px);
+    min-height: 300px;
+}
+.availableParkCard {
+    background-color: white;
+    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.2);
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.parkActions {
+    background-color: #474b5a;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 0px 0px 5px 5px;
+}
+.parkAddress {
+    padding: 10px;
+}
+.book-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border-radius: 0px 0px 5px 0px;
+    transition-duration: 0.5s;
+}
+.book-btn:hover {
+    background-color: #6c6f7a;
+}
+.details-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border-radius: 0px 0px 0px 5px;
+    transition-duration: 0.5s;
+}
+.details-btn:hover {
+    background-color: #6c6f7a;
+}
+.cancel-booking-btn {
+    background-color: transparent;
+    border: none;
+    color: #ff5454;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border-radius: 0px 0px 0px 5px;
+    transition-duration: 0.5s;
+}
+.cancel-booking-btn:hover {
+    background-color: #6c6f7a;
+}
+.carparksMap-wrapper {
+    #map {
+        height: calc(100vh - 288px);
+        min-height: 342px;
+    }    
+    #mapLoading {
+        position: absolute;z-index: 9999;
+        margin-top: 25px;
+        top: calc(50% - 60px);
+        padding: 20px;
+        left: calc(50% - 150px);
+        background-color: white;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 400;
+        
+        span {
+            font-size: 12px;
+            font-style: italic;
+            display: block;
+        }
+    }
+    .infoWindowWrapper {
+        .address {
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .info {
+            font-weight: 300;
+            font-size: 12px;
+        }
+        hr {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+        .links {
+            a {
+                font-size: 11px;
+            }
+        }
+    }
+}

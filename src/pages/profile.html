@@ -1,0 +1,133 @@
+---
+title: Account Profile
+---
+
+<div class="container-fluid">
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">GetParked Account Profile</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="/">Dashboard</a></li>
+                <li class="active">Profile</li>
+            </ol>
+        </div>
+    </div>
+    <form autocomplete="off" class="form-horizontal form-material multi-col-form" id="profileForm"enctype="multipart/form-data">
+        <div class="row equal">
+            <div class="col-md-8 col-xs-12">
+                <div class="white-box">
+                    <div class="form-group">
+                        <label class="col-md-12">Full Name</label>
+                        <div class="col-md-12">
+                            <input name="name" type="text" placeholder="Your Full Name..." class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Company</label>
+                        <div class="col-md-12">
+                            <input name="company" type="text" placeholder="Your company..." class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Mobile/Phone</label>
+                        <div class="col-md-12">
+                            <input name="phone" type="text" placeholder="+61 xxx xxx xxx" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12">Email</label>
+                        <div class="col-md-12">
+                            <input name="email" type="email" placeholder="johnathan@example.com" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Residential Address</label>
+                        <div class="col-md-12">
+                            <input autocomplete="new-password" role="presentation" name="address" type="text" id="user_input_autocomplete_address"placeholder="No address" class="form-control form-control-line">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="white-box">
+                    <h4>Supporting Documentation:</h4>
+                    <div class="form-group">
+                        <label class="col-md-12">Scan copy or Photo of Drivers License <i>(front side only)</i></label>
+                        <div class="col-md-12">
+                            <input id = "fileinput" type="file" name="license" class="form-control form-control-line" accept="image/*" onchange="readFile(this)">
+                            <!-- <input type="text" placeholder="Start typing" class="form-control form-control-line"> -->
+                            <img id="img01">
+                        </div>
+                    </div>
+                    <h4 id="add-car-title">Your Vehicles:</h4>
+                    <div class="your-cars-list">
+                        <div class="authorised-cars">
+                            <div class="row">
+                                <div class="col-xs-4">Honda Accord</div>
+                                <div class="col-xs-5" id = "1">565 SWF</div>
+                                <div class="col-xs-1" id="2"><a class="btn btn-default btn-sm" type="button" href="#"> <i aria-hidden="true" class="fa fa-times"></i> Remove</a></div>
+                            </div>
+                        </div>
+                        <a class="btn btn-info btn-sm" type="button" href="#" id="add-new-car"> <i aria-hidden="true" class="fa fa-plus"></i> Add New Vehicle</a>
+                    </div>
+                    <div class="add-new-car" style="padding: 5px;">
+                        <div class="form-group" style="overflow: inherit; padding: 10px;">
+                            <div class="row">
+                                <label class="col-md-6">Car Make</label>
+                                <label class="col-md-6">Car Model</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select id="car1Make" data-actions-box="true" title="Please Select..." class="selectpicker form-control" data-live-search="true"></select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="car1Model" data-actions-box="true" title="Select Make First" class="selectpicker form-control" data-live-search="true"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">License Plate Number</label>
+                            <div class="col-md-12">
+                                <input id="numberplate" name="numberplate" type="text" placeholder="Start typing" class="form-control form-control-line">
+                            </div>
+                        </div>
+                        <a class="btn btn-info btn-sm" type="button" href="#" id="add-to-list"> <i aria-hidden="true" class="fa fa-plus"></i> Add vehicle to list</a>
+                        <a class="btn btn-default btn-sm" type="button" href="#" id="cancel-add-car"> Cancel</a>
+                    </div>
+
+                    <hr />
+
+                    <div class="alert alert-default details-safe-disclaimer" style="background-color: #f3f3f3;">
+                        <ul class="margin-bottom-none padding-left-lg">
+                            <li>Information provided to Get Parked is strictly confidential and not shared with any third parties, other than those strictly required to provide your service.</li>
+                            <li>Sensitive details such as the copy of your Drivers License is stored securely in the Amazon Cloud and used only for verification purposes. <b>This information is not shared with any third parties whatsoever.</b> Please see our Legal &amp; Privacy policies for further details.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="padding-top: 10px;" id = "savebutton">
+                <button class="btn btn-success">Save Changes</button>
+                <a class="btn btn-warning" href="/change-password.html">Change Password</a>
+                <a class="btn btn-default" href="/account-legal.html">Account &amp; Legal Notices</a>
+            </div>
+        </div>
+    </form>
+    <div class="col-md-12" style="padding-top: 10px; padding-left: 0px;" id = "editbutton">
+        <button class="btn btn-success" style="width: 115px;">Edit</button>
+        <a class="btn btn-warning" href="/change-password.html">Change Password</a>
+        <a class="btn btn-default" href="/account-legal.html">Account &amp; Legal Notices</a>
+    </div>
+</div>
+
+<div id="confirmRemoveVehicle" class="modal fade model-dialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-body"></div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-warning" id="delete">Delete</button>
+        <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+    </div>
+</div>

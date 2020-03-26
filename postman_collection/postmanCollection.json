@@ -1,0 +1,3163 @@
+{
+	"info": {
+		"_postman_id": "d301a9e8-3b78-4afc-afb8-83e16e3d7442",
+		"name": "get parked auto tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login test",
+			"item": [
+				{
+					"name": "is-logged-in false",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ace9297-86af-431a-980a-351475692255",
+								"exec": [
+									"pm.test(\"is unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4bd962d9-f05f-47f8-85e8-05c2501a4516",
+								"exec": [
+									"/*const cookieJar = pm.cookies.jar(); // create cookie jar",
+									"cookieJar.clear(\"localhost\", (error) => {",
+									"    console.log(error);",
+									"}); // delete the set cookies",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/is-logged-in",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"is-logged-in"
+							]
+						},
+						"description": "calls the is-logged-in endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "login bad username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"is unauthorized\", () => {",
+									"    pm.response.to.have.status(401);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.co\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "tries logging in with an incorrect username"
+					},
+					"response": []
+				},
+				{
+					"name": "login bad password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"is unauthorized\", () => {",
+									"    pm.response.to.have.status(401);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"tes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login no password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"is a bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login no username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"is a bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "is-logged-in false",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ace9297-86af-431a-980a-351475692255",
+								"exec": [
+									"Vapm.test(\"is unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/is-logged-in",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"is-logged-in"
+							]
+						},
+						"description": "calls the is-logged-in endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "login correct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"logged in\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "is-logged-in true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ace9297-86af-431a-980a-351475692255",
+								"exec": [
+									"pm.test(\"is logged in\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/is-logged-in",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"is-logged-in"
+							]
+						},
+						"description": "calls the is-logged-in endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9643e232-dd69-4574-888a-1f6d4d8e921b",
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"You are logged out\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "is-logged-in false",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ace9297-86af-431a-980a-351475692255",
+								"exec": [
+									"pm.test(\"is unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/is-logged-in",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"is-logged-in"
+							]
+						},
+						"description": "calls the is-logged-in endpoint"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a1346c47-610a-419c-a971-fcd4649d5bde",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "10247905-1ae2-4b47-87b7-ed955d649f51",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "New account tests",
+			"item": [
+				{
+					"name": "new account used email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'ohnson\",\n\t\"mobile\": \"0400000000\",\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test1234\",\n\t \"passwordRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new account invalid email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'ohnson\",\n\t\"mobile\": \"0400000000\",\n\t\"email\": \"davedave.com\",\n\t\"password\": \"test1234\",\n\t \"passwordRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new account invalid mobile number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'ohnson\",\n\t\"mobile\": \"0400000000a\",\n\t\"email\": \"dave@dave.com\",\n\t\"password\": \"test1234\",\n\t \"passwordRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new account invalid name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'&ohnson\",\n\t\"mobile\": \"0400000000\",\n\t\"email\": \"dave@dave.com\",\n\t\"password\": \"test1234\",\n\t \"passwordRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new account non-matching passwords",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'ohnson\",\n\t\"mobile\": \"0400000000\",\n\t\"email\": \"dave@dave.com\",\n\t\"password\": \"test1234\",\n\t\"passwordRepeat\": \"test01234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new account  correct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is OK\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'ohnson\",\n\t\"mobile\": \"0400000000\",\n\t\"email\": \"dave@dave.com\",\n\t\"password\": \"test1234\",\n\t\"passwordRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "is logged in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8069407f-b4b8-4697-bdff-c7c5ee51a5d2",
+								"exec": [
+									"pm.test(\"is OK\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/is-logged-in",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"is-logged-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9643e232-dd69-4574-888a-1f6d4d8e921b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creating same account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullName\": \"Dave Daveson-J'ohnson\",\n\t\"mobile\": \"0400000000\",\n\t\"email\": \"dave@dave.com\",\n\t\"password\": \"test1234\",\n\t\"passwordRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/new-account",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"new-account"
+							]
+						},
+						"description": "Creating the same account again should fail (since email is not unique)"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4206417d-3ee6-492c-b9fc-b0ff75299435",
+								"exec": [
+									"pm.test(\"is OK\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"dave@dave.com\",\n\t\"password\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9643e232-dd69-4574-888a-1f6d4d8e921b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Private methods auth check",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Dave2\",\n\t\"mobile\": \"0400000000\",\n\t\"company\": null,\n\t\"address\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPass\": \"test\",\n\t\"newPass\": \"test1234\",\n\t\"newPassRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/change-password",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get my account data ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/account-data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add payment info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addressLine1\": \"1 Queen Street\",\r\n    \"city\": \"Brisbane\",\r\n    \"state\": \"QLD\",\r\n    \"postcode\": \"4000\",\r\n    \"expireYear\": \"21\",\r\n    \"expireMonth\": \"12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/add-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"add-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get payment info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/get-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove payment details",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/remove-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"remove-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "map data minimal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/map-data-minimal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"map-data-minimal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "map data detailed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/map-data-detailed",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"map-data-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "park info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/park-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"park-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my parks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/my-parks",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"my-parks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-available-park",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/get-available-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-available-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book-park",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": \"12325\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/book-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add cars",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"brand\": \"blah\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/add-cars",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"add-cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cars",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"brand\": \"blah\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/get-cars",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove cars",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"brand\": \"blah\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/remove-cars",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"remove-cars"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Checks if all these api endpoints return unauthorized without logging in",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6972efa4-5823-4716-956e-7ec672b9b451",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0e25f74d-e515-4d0e-8f07-5b49bc1aa3b2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"is unauthorized\", () => {",
+							"    pm.response.to.have.status(401);",
+							"})"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "account info tests",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"logged in\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"matt@test.com\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get my account data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34a62671-7309-4d63-8d7a-5c848c01731e",
+								"exec": [
+									"pm.test(\"Body has correct email\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"matt@test.com\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/account-data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update: null mobile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cb63073-6786-48a5-80a8-2b07292d98ac",
+								"exec": [
+									"pm.test(\"bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Dave2\",\n\t\"mobile\": null,\n\t\"company\": null,\n\t\"address\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update: null name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cb63073-6786-48a5-80a8-2b07292d98ac",
+								"exec": [
+									"pm.test(\"bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": null,\n\t\"mobile\": \"0400000000\",\n\t\"company\": null,\n\t\"address\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update: invalid name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cb63073-6786-48a5-80a8-2b07292d98ac",
+								"exec": [
+									"pm.test(\"bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test @ Smith\",\n\t\"mobile\": \"0400000000\",\n\t\"company\": null,\n\t\"address\": null,\n\t\"file\": \"blah.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update: invalid mobile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cb63073-6786-48a5-80a8-2b07292d98ac",
+								"exec": [
+									"pm.test(\"bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Smith\",\n\t\"mobile\": \"0400000000a\",\n\t\"company\": null,\n\t\"address\": null,\n\t\"file\": \"blah.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update: null address and company and filename",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cb63073-6786-48a5-80a8-2b07292d98ac",
+								"exec": [
+									"pm.test(\"Ok\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Smith\",\n\t\"mobile\": \"0400000000\",\n\t\"company\": null,\n\t\"address\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update: bogus licence filename",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cb63073-6786-48a5-80a8-2b07292d98ac",
+								"exec": [
+									"pm.test(\"Ok\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Smith III\",\n\t\"mobile\": \"0400000000\",\n\t\"company\": null,\n\t\"address\": null,\n\t\"file\": \"blah.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password: non-match",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0dc422dc-0296-46be-b4ed-9f3e5f281c45",
+								"exec": [
+									"pm.test(\"Bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPass\": \"test\",\n\t\"newPass\": \"test1234\",\n\t\"newPassRepeat\": \"test1235\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/change-password",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password: wrong old password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "69523c30-02a1-4c2e-98e5-0037706af092",
+								"exec": [
+									"pm.test(\"Bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPass\": \"testwrong\",\n\t\"newPass\": \"test1234\",\n\t\"newPassRepeat\": \"test1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/change-password",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password: too short",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "69523c30-02a1-4c2e-98e5-0037706af092",
+								"exec": [
+									"pm.test(\"Bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPass\": \"test\",\n\t\"newPass\": \"test2\",\n\t\"newPassRepeat\": \"test2\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/change-password",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password: correct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "69523c30-02a1-4c2e-98e5-0037706af092",
+								"exec": [
+									"pm.test(\"OK\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPass\": \"test\",\n\t\"newPass\": \"testing1234\",\n\t\"newPassRepeat\": \"testing1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/change-password",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9643e232-dd69-4574-888a-1f6d4d8e921b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login with new password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"logged in\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"matt@test.com\",\n\t\"password\": \"testing1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9643e232-dd69-4574-888a-1f6d4d8e921b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "18104e51-8b6a-4138-9670-da92f2442c77",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1b876b3-4a2e-476f-a506-bfdc042349cb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Payment info tests",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"logged in\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get payment info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57f2f4e2-4377-44a7-8b54-118bde085d13",
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"User does not have payment details\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/get-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove payment details if none",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a08f05e-6542-4b71-81dc-b066e9d9b51e",
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"User does not have payment details\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/remove-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"remove-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add payment info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "628aa1f8-9b4b-411a-a314-28cce11b166a",
+								"exec": [
+									"pm.test(\"Created record\", () => {",
+									"    pm.response.to.have.status(201);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cardName\": \"MR TEST SMITH\",\n\t\"cardNum\": \"4200000000000000\",\n\t\"cardCCV\": \"123\",\n\t\"expireYear\": \"21\",\n\t\"expireMonth\": \"12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/add-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"add-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get payment info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5e3c727-7639-4410-83a8-c5ae0274a910",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.card_name).to.eql(\"MR TEST SMITH\");\r",
+									"    pm.expect(jsonData.card_number_last4).to.eql(\"0000\");\r",
+									"    pm.expect(jsonData.expire_year).to.eql(2021);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/get-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add payment details again",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "628aa1f8-9b4b-411a-a314-28cce11b166a",
+								"exec": [
+									"pm.test(\"bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"    pm.response.to.have.body(\"User already stored their details, delete first before updating\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cardName\": \"MR TEST SMITH\",\n\t\"cardNum\": \"4200000000000000\",\n\t\"cardCCV\": \"123\",\n\t\"expireYear\": \"22\",\n\t\"expireMonth\": \"12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/add-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"add-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove payment details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f279460-b00d-47db-83cb-76e756e701e6",
+								"exec": [
+									"pm.test(\"OK\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/remove-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"remove-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get payment info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8b87c87-7202-45b6-bcde-d3a17d6fd8d2",
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"User does not have payment details\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/get-payment-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-payment-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9643e232-dd69-4574-888a-1f6d4d8e921b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "carpark tests",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e64a43f9-b8a5-45e1-85c6-e255fa6ef11f",
+								"exec": [
+									"pm.test(\"logged in\", () => {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "map data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "be1addc3-3a3f-4f18-b557-af5be2d3de1a",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"\r",
+									"    // making sure each location has >= 1 available parks\r",
+									"    for (i = 0; i < jsonData.length; i++) {\r",
+									"        pm.expect(jsonData[i].availableParks).to.be.above(0);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/map-data-detailed",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"map-data-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my parks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0eccc2bc-9a4c-436f-9656-07efddc67f68",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData[0].street).to.eql(\"25 Morgan St\");\r",
+									"    pm.expect(jsonData.length).to.eql(1);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/my-parks",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"my-parks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "park-info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f334d6fa-e0ce-495a-9718-d58c2d724c55",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.id).to.eql(7);\r",
+									"    pm.expect(jsonData.street).to.eql(\"250 Ipswich Rd\");\r",
+									"\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/park-info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"park-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-available-park",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0144ec82-f395-4e4f-81bd-daef4ef5a817",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.parkId).to.eql(2);\r",
+									"\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"25 Morgan St\",\r\n    \"suburb\": \"Fortitude Valley\",\r\n    \"postcode\": \"4000\",\r\n    \"type\": \"carpark\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/get-available-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-available-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-available-park null field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0144ec82-f395-4e4f-81bd-daef4ef5a817",
+								"exec": [
+									"pm.test(\"bad request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"\",\r\n    \"suburb\": \"Fortitude Valley\",\r\n    \"postcode\": \"4000\",\r\n    \"type\": \"carpark\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/get-available-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-available-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book-park already booked",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b957e4a0-72f8-4670-97b3-763390b668d4",
+								"exec": [
+									"pm.test(\"Correct response\", function () {",
+									"    pm.response.to.have.body(\"This park is already booked\");",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/book-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book non-existent park",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cd339b6c-4842-49a0-9767-9a7d3df820ee",
+								"exec": [
+									"pm.test(\"Bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": 124\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/book-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book park null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cd339b6c-4842-49a0-9767-9a7d3df820ee",
+								"exec": [
+									"pm.test(\"Bad request\", () => {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/book-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book-park",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0cd1010-c2d2-4988-86ba-289293091d2d",
+								"exec": [
+									"pm.test(\"OK\", () => {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.have.body(\"OK\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/book-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-available-park same location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0144ec82-f395-4e4f-81bd-daef4ef5a817",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.parkId).to.eql(3);\r",
+									"\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"25 Morgan St\",\r\n    \"suburb\": \"Fortitude Valley\",\r\n    \"postcode\": \"4000\",\r\n    \"type\": \"carpark\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/get-available-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-available-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "map data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "be1addc3-3a3f-4f18-b557-af5be2d3de1a",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"\r",
+									"    // making sure each location has >= 1 available parks\r",
+									"    for (i = 0; i < jsonData.length; i++) {\r",
+									"        pm.expect(jsonData[i].availableParks).to.be.above(0);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/map-data-detailed",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"map-data-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book-park another",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0cd1010-c2d2-4988-86ba-289293091d2d",
+								"exec": [
+									"pm.test(\"Bad request\", () => {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.have.body(\"OK\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/book-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book-park"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "map data one less",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "be1addc3-3a3f-4f18-b557-af5be2d3de1a",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.length).to.eql(5);\r",
+									"\r",
+									"    // making sure each location has >= 1 available parks\r",
+									"    for (i = 0; i < jsonData.length; i++) {\r",
+									"        pm.expect(jsonData[i].availableParks).to.be.above(0);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkId\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/map-data-detailed",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"map-data-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-available-park not available",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0144ec82-f395-4e4f-81bd-daef4ef5a817",
+								"exec": [
+									"pm.test(\"Correct details\", function () {\r",
+									"    pm.response.to.have.body(\"No Parks available\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"250 Ipswich Rd\",\r\n    \"suburb\": \"Woolloongabba\",\r\n    \"postcode\": \"4102\",\r\n    \"type\": \"carpark\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/get-available-park",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get-available-park"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

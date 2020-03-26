@@ -1,0 +1,27 @@
+.logo-wide {
+    svg {
+        height: 22px;
+    }
+    max-height: 35px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    //background-color: blue;
+}
+.logo-icon {
+    svg {
+        height: 22px;
+    }
+    max-height: 35px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+.find-a-park {
+    margin-left: 10px;
+}
+
+// Add padding to first menu item child...
+#side-menu {
+    li:first-child {
+        padding: 70px 0 0;
+    }
+}

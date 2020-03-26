@@ -1,0 +1,16 @@
+<!--
+    Google optimize CSS delivery
+    SEE: https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
+-->
+
+<!-- Load Google's JS for Places/Maps APIs-->
+{{#ifpage 'profile' 'new-account'}}
+    <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyC9A6FalqS-5U1D0B4oHUWo62Huzo22_YY"></script>
+{{/ifpage}}
+{{#ifpage 'carparks'}}
+    <script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9A6FalqS-5U1D0B4oHUWo62Huzo22_YY"></script>
+{{/ifpage}}
+
+<!-- Load Application JS Files ...  -->
+<script defer src="{{root}}assets/js/libraries-min.js" type="text/javascript"></script>
+<script defer src="{{root}}assets/js/core.js" type="text/javascript"></script>

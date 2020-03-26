@@ -1,0 +1,54 @@
+# When developing locally we will run on this port...
+PORT: 8002
+
+# Autoprefixer will make sure your CSS works with these browsers
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+  - "ios >= 7"
+
+# UnCSS will use these settings
+UNCSS_OPTIONS:
+  html:
+    - "src/**/*.html"
+  ignore:
+    - !!js/regexp ^\.is-.*
+
+# Gulp will reference these paths when it copies files
+PATHS:
+
+  # Path to dist folder
+  dist: "dist"  
+
+  # Temp processing directory (used for intermediate  critical path css scripts)
+  temp: "tmp"
+
+  # Paths to static assets that aren't images, CSS, or JavaScript
+  assets:
+    - "src/assets/!(js.raw|js.libs|scss)**/*"
+    #- "src/assets/!{scss}**/*"
+    #- "!src/assets/{images,js}/**/*"
+
+  # Paths to Sass libraries, which can then be loaded with @import
+  sass:
+    - "node_modules/bootstrap-sass/assets/stylesheets"
+    - "node_modules/datatables.net-bs/css"
+    - "node_modules/animate.css"
+    - "node_modules/metismenu/dist"
+    - "node_modules/font-awesome/scss"
+    - "node_modules/bootstrap-select/sass"
+
+  # Any Javascript Libraries that we want bundled & minified - NB Bundled in order listed...
+  jsLibs:
+    # JQuery3, Underscore & Bootstrap 3 First!
+    - "node_modules/jquery/dist/jquery.js"
+    - "node_modules/bootstrap/dist/js/bootstrap.js"
+    - "node_modules/underscore/underscore.js"
+
+    # Include additional libraries used (no special order, however bootstrap & jq required first)...
+    - "node_modules/metismenu/dist/metisMenu.js"
+    - "node_modules/jquery-slimscroll/jquery.slimscroll.js"
+    - "node_modules/node-waves/dist/waves.js"
+    - "node_modules/bootstrap-select/dist/js/bootstrap-select.js"
+    - "node_modules/geolocation-marker/geolocation-marker.js"
+    - "node_modules/blueimp-md5/js/md5.js"
