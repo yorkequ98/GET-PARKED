@@ -21,7 +21,7 @@
     "bootstrap-validator": "^0.11.9",
     "browser-sync": "^2.26.7",
     "css-loader": "^3.2.0",
-    "datatables.net": "1.10.16",
+    "datatables.net": "1.10.22",
     "datatables.net-bs": "1.10.16",
     "file-loader": "^4.2.0",
     "font-awesome": "4.7.0",
