@@ -51,7 +51,7 @@
     "sass-loader": "6.0.7",
     "style-loader": "^1.0.0",
     "swagger-ui-express": "^4.1.1",
-    "underscore": "1.9.0",
+    "underscore": "1.12.1",
     "url-loader": "^2.1.0",
     "validator": "^11.1.0",
     "webpack": "4.2.0",
