@@ -11,7 +11,7 @@
   "author": "David Nedved",
   "license": "MIT",
   "dependencies": {
-    "ajv": "^6.0.0",
+    "ajv": "^6.12.3",
     "animate.css": "3.6.1",
     "blueimp-md5": "^2.10.0",
     "bootstrap": "3.3.7",
